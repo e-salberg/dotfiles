@@ -1,0 +1,152 @@
+{
+    // General Waybar configuration
+  "layer": "top",
+  "height": 24,
+  "margin": 0,
+  "spacing": 10,
+  "border-size": 2,
+  "padding": 10,
+
+  "modules-left": [
+    //"hyprland/workspaces",
+    "custom/weather",
+    "hyprland/language",
+    "keyboard-state",
+  ],
+
+  "modules-center": [
+    //"hyprland/window",
+    "hyprland/workspaces",
+  ],
+
+  "modules-right": [
+    "battery",
+    "network",
+    "wireplumber",
+    "custom/notification",
+    "clock",
+  ],
+
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "disable-scroll": true,
+    "all-outputs": true,
+    "show-special": true,
+    //"warp-on-scroll": false,
+    /*"format": "{name}: {icon}",
+    "format-icons": {
+      // "1": "",
+      // "2": "",
+      // "3": "",
+	    // "4": "",
+      // "5": "",
+      "urgent": "",
+      "active": "",
+      "default": "",
+      "empty": "",
+    },*/
+    "persistent-workspaces": {
+      "*": [1, 2, 3],
+    },
+  },
+
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": " ",
+    "format-ethernet": " ",
+    "format-disconnected": " ", //An empty format will hide the module.
+    "tooltip-format": " {ifname} via {gwaddr}",
+    "tooltip-format-wifi": "   {essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": " {ifname} {ipaddr}/{cidr}",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+  },
+
+  "keyboard-state": {
+    "capslock": true,
+    "format": "{name} {icon}",
+    "format-icons": {
+      "locked": "",
+      "unlocked": ""
+    }
+  },
+
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon}",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt-click": "click-right",
+    "format-alt": "{icon} {capacity}%",
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+  },
+  "clock": {
+    "tooltip": false,
+    "format": "{:%a %b %d  %I:%M %p }"
+  },
+
+  "wireplumber": {
+    "format": "{icon}",
+    "format-muted": " ",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [" ", " ", " "]
+    },
+    "tooltip": true,
+    "tooltip-format": "{icon}   at {volume}%"
+  },
+
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+
+  "custom/weather": {
+    //shows the current weather and forecast
+    "tooltip" : true,
+    "format" : "{}",
+    "interval" : 1800, //3600,
+    "exec" : "~/.config/waybar/scripts/wttr.py",
+    "return-type" : "json"
+  },
+  
+  "hyprland/language": {
+    "format": "{}",
+    "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next",
+    "format-en": "EN",
+    "format-zh": "ZH",
+  },
+}
+

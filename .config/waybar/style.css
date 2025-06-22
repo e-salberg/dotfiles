@@ -1,0 +1,109 @@
+/* Colors (dracula) */
+@define-color foreground	#f8f8f2;
+@define-color background	rgba(40, 42, 54, 0.5);
+@define-color orange	#ffb86c;
+@define-color gray	#44475a;
+@define-color black #21222c;
+@define-color red	#ff5555;
+@define-color green	#50fa7b;
+@define-color yellow	#f1fa8c;
+@define-color cyan	#2dc7c4;
+@define-color blue	#6272a4;
+@define-color purple	#bd93f9;
+@define-color pink	#ff79c6;
+@define-color white #ffffff;
+@define-color brred #ff6e6e;
+@define-color brgreen #69ff94;
+@define-color bryellow #ffffa5;
+@define-color brcyan #a4ffff;
+@define-color brblue #6272a4;
+@define-color brpurple #d6acff;
+@define-color brpink #ff92df;
+
+@define-color arch_blue #89b4fa;
+
+@define-color workspace_background	@background;
+@define-color workspace_button	@foreground;
+@define-color workspace_active	@black;
+@define-color workspace_active_background	@purple;
+@define-color workspace_urgent	@white;
+@define-color workspace_urgent_background	@brred;
+@define-color workspace_hover	@black;
+@define-color workspace_hover_background	@cyan;
+@define-color critical	@red;
+@define-color warning	@yellow;
+
+*{
+  font-size: 14px; /* 16px */
+  background: transparent;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: @foreground;
+  border-bottom: 1px solid #000000;
+  /*padding: 4px 10px;
+  margin: 5px;*/
+}
+
+#workspaces {
+  background: @workspace_background;
+  opacity: 1;
+  transition: none;
+  padding: 5px 5px;
+  border-radius: 5px;
+}
+
+#workspaces button, #workspaces button.persistent {
+  background: transparent;
+  color: @workspace_button;
+  transition: none; 
+  min-width: 0;
+  min-height: 0;
+}
+
+#workspaces button.active {
+  background: @workspace_active_background;
+  color: @workspace_active;
+  border-radius: 5px;
+}
+
+#workspaces button.urgent {
+  background: @workspace_urgent_background;
+  color: @workspace_urgent;
+  border-radius: 5px;
+}
+
+#workspaces button:hover {
+  background: @workspace_hover_background;
+  color: @workspace_hover;
+  border-radius: 5px;
+}
+
+#battery,
+#network,
+#wireplumber {
+  margin: 0px;
+}
+
+#keyboard-state {
+  margin-right: 8px;
+  padding-right: 16px;
+  border-radius: 0px 10px 10px 0px;
+  transition: none; 
+}
+
+tooltip {
+    background: @background;
+    opacity: 1;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: @purple;
+}
+
+tooltip label{
+    color: @grey;
+}
+
