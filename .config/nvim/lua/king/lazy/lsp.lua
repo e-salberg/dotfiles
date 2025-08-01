@@ -25,8 +25,8 @@ return {
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 			local servers = {
 				clangd = {},
-				--basedpyright = {},
-				fish_lsp = {},
+				basedpyright = {},
+				--fish_lsp = {},
 				lua_ls = {
 					settings = {
 						Lua = {
@@ -43,7 +43,7 @@ return {
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
 				"clang-format", -- Used to format C/C++ code
-				-- "black", --Used to format Python code
+				"black", --Used to format Python code
 				-- "isort", -- Python sort imports
 			})
 

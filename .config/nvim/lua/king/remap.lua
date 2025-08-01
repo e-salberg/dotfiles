@@ -14,6 +14,10 @@ vim.keymap.set("n", "<leader>ng", function()
 	vim.cmd("Neogit")
 end)
 
+vim.keymap.set("n", "<leader>md", function()
+	vim.cmd("RenderMarkdown toggle")
+end)
+
 vim.keymap.set("n", "<leader>b", function()
 	vim.cmd("split")
 end)
